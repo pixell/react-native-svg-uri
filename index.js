@@ -23,7 +23,7 @@ import Svg,{
 
 import * as utils from './utils';
 
-const ACEPTED_SVG_ELEMENTS = [
+const ACCEPTED_SVG_ELEMENTS = [
   'svg',
   'g',
   'circle',
@@ -34,7 +34,8 @@ const ACEPTED_SVG_ELEMENTS = [
   'radialGradient',
   'stop',
   'ellipse',
-  'polygon'
+  'polygon',
+  'polyline'
 ];
 
 // Attributes from SVG elements that are mapped directly.
@@ -136,7 +137,7 @@ class SvgUri extends Component{
         case 'rect':
              componentAtts = this.obtainComponentAtts(node, RECT_ATTS);
             return <Rect key={i} {...componentAtts}>{childs}</Rect>;
-        case 'defs': 
+        case 'defs':
             return <Defs key={i}>{childs}</Defs>;
         case 'linearGradient':
              componentAtts = this.obtainComponentAtts(node, LINEARG_ATTS);
@@ -185,7 +186,7 @@ class SvgUri extends Component{
       let arrayElements = [];
 
       // Only process accepted elements
-      if (!ACEPTED_SVG_ELEMENTS.includes(node.nodeName))
+      if (!ACCEPTED_SVG_ELEMENTS.includes(node.nodeName))
           return null;
       // if have children process them.
 

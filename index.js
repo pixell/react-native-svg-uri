@@ -44,6 +44,7 @@ const G_ATTS = ['id'];
 
 const CIRCLE_ATTS = ['cx', 'cy', 'r'];
 const PATH_ATTS = ['d'];
+const LINE_ATTS = ['x1', 'y1', 'x2', 'y2'];
 const RECT_ATTS = ['width', 'height'];
 const LINEARG_ATTS = ['id', 'x1', 'y1', 'x2', 'y2', 'gradientUnits'];
 const RADIALG_ATTS = ['id', 'cx', 'cy', 'r', 'gradientUnits'];
@@ -53,7 +54,7 @@ const ELLIPSE_ATTS = ['cx', 'cy', 'rx', 'ry'];
 const POLYGON_ATTS = ['points'];
 const POLYLINE_ATTS = ['points'];
 
-const COMMON_ATTS = ['fill', 'fillOpacity', 'stroke', 'strokeWidth', 'strokeOpacity', 'strokeLinecap', 'strokeLinejoin',
+const COMMON_ATTS = ['fill', 'fillOpacity', 'opacity', 'stroke', 'strokeWidth', 'strokeOpacity', 'strokeLinecap', 'strokeLinejoin',
     'strokeDasharray', 'strokeDashoffset', 'x', 'y', 'rotate', 'scale', 'origin', 'originX', 'originY'];
 
 let ind = 0;
@@ -131,6 +132,9 @@ class SvgUri extends Component{
         case 'path':
              componentAtts = this.obtainComponentAtts(node, PATH_ATTS);
             return <Path key={i} {...componentAtts}>{childs}</Path>;
+        case 'line':
+            componentAtts = this.obtainComponentAtts(node, LINE_ATTS);
+            return <Line key={i} {...componentAtts}>{childs}</Line>;
         case 'circle':
              componentAtts = this.obtainComponentAtts(node, CIRCLE_ATTS);
             return <Circle key={i} {...componentAtts}>{childs}</Circle>;
